@@ -147,4 +147,4 @@ function createMap(earthquakes) {
   legend.addTo(myMap);
 }
 
-  
+// make object or parse
