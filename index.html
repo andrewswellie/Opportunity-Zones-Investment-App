@@ -40,28 +40,31 @@
 </nav>
 
 
+
     <!-- Left and right controls -->
-    <div class="jumbotron jumbotron-fluid">
+<div class="jumbotron jumbotron-fluid">
         <div class="container">
           <h1 class="display-4">Opportunity Zones Investment Tool</h1>
           <p class="lead">Find the right opportunity for your next investment.</p>
-          <div id="map"></div>
+          <div id="thisid"></div>
         </div>
-      </div>
+</div>
+
 
   
 <div class="container text-center">    
   <h3>What We Do</h3><br>
   <div class="row">
     <div class="col-sm-8">
-      <img src="https://placehold.it/150x80?text=MAP" class="img-responsive" style="width:100%" alt="Map">
-      <p>Current Project</p>
+        <div id="map" style="width: 650px; height: 450px"></div>   
+      
+      <p>Some text</p>
     </div>
     <div class="col-sm-4">
-      <div class="well">
+      <div class="well" style="width: 450px; height: 250px">
        <p>Graph</p>
       </div>
-      <div class="well">
+      <div class="well" style="width: 450px">
        <p>Some text..</p>
       </div>
     </div>
@@ -71,6 +74,9 @@
 <footer class="container-fluid text-center">
   <p>Footer Text</p>
 </footer>
-
+<!-- API key -->
+<script type="text/javascript" src="config.js"></script>
+<!-- Our JS -->
+<script type="text/javascript" src="logic.js"></script>
 </body>
 </html>
