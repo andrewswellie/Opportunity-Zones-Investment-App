@@ -1,6 +1,6 @@
 // Store our API endpoint inside queryUrl
-var queryUrl = "boundaries.geojson";
-
+var queryUrl = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson";
+var tectPlatesURL = "https://raw.githubusercontent.com/fraxen/tectonicplates/master/GeoJSON/PB2002_boundaries.json";
 
 // Perform a GET request to the query URL
 d3.json(queryUrl, function(data) {
@@ -8,8 +8,24 @@ d3.json(queryUrl, function(data) {
   createFeatures(data.features);
 });
 
+ // Color
+function getColor(magnitude) {
+  if (magnitude > 5) {
+      return '#CC0000'
+  } else if (magnitude > 4) {
+      return '#FF6900'
+  } else if (magnitude > 3) {
+      return '#FFCC00'
+  } else if (magnitude > 2) {
+      return '#CCFF33'
+  } else if (magnitude > 1) {
+      return 'green'
+  } else {
+      return '#66FFCC'
+  }
+}
 
-function createFeatures(boundaries) {
+function createFeatures(earthquakeData) {
 
   // Define a function we want to run once for each feature in the features array
   // Give each feature a popup describing the place and time of the earthquake
@@ -20,7 +36,7 @@ function createFeatures(boundaries) {
 
   // Create a GeoJSON layer containing the features array on the earthquakeData object
   // Run the onEachFeature function once for each piece of data in the array
-  var OZ = L.geoJSON(boundaries, {
+  var earthquakes = L.geoJSON(earthquakeData, {
     onEachFeature: onEachFeature,
     
     pointToLayer: function (feature, latlng) {
@@ -35,7 +51,7 @@ function createFeatures(boundaries) {
   })
 
 // Sending our earthquakes layer to the createMap function
-createMap(OZ);
+createMap(earthquakes);
 
 }
 
@@ -65,10 +81,13 @@ function createMap(earthquakes) {
     accessToken: API_KEY
   });
 
+   // Add a tectonic plate layer
+   var tectonicPlates = new L.LayerGroup();
 
    // Create overlay object to hold our overlay layer
    var overlayMaps = {
-     "Opportunity Zones": OZ,
+     Earthquakes: earthquakes,
+     "Tectonic Plates": tectonicPlates
    };
 
   // Define a baseMaps object to hold our base layers
@@ -82,13 +101,23 @@ function createMap(earthquakes) {
   // Create our map, giving it the streetmap and earthquakes layers to display on load
   var myMap = L.map("map", {
     center: [
-      41.8500300, -87.6500500
+      37.09, -95.71
     ],
     zoom: 5,
-    layers: [lightmap, OZ]
+    layers: [lightmap, earthquakes, tectonicPlates]
   });
 
-
+  
+   // Add Fault lines data
+   d3.json(tectPlatesURL, function(plateData) {
+    // Adding our geoJSON data, along with style information, to the tectonicplates
+    // layer.
+    L.geoJson(plateData, {
+      color: "blue",
+      weight: 2
+    })
+    .addTo(tectonicPlates);
+  });
 
   // Create a layer control
   // Pass in our baseMaps and overlayMaps
@@ -96,6 +125,26 @@ function createMap(earthquakes) {
   L.control.layers(baseMaps, overlayMaps, {
     collapsed: false
   }).addTo(myMap);
+
+  // Create legend
+  var legend = L.control({position: 'bottomright'});
+
+  legend.onAdd = function () {
+
+    var div = L.DomUtil.create('div', 'info legend'),
+              grades = [0, 1, 2, 3, 4, 5],
+              labels = [];
+
+  // Loop through our density intervals and generate a label with a colored square for each interval
+    for (var i = 0; i < grades.length; i++) {
+        div.innerHTML +=
+            '<i style="background:' + getColor(grades[i] + 1) + '"></i> ' +
+            grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+');
+    }
+    return div;
+  };
+
+  legend.addTo(myMap);
 }
 
 // make object or parse

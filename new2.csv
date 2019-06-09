@@ -1,4 +1,4 @@
-,geoid,Census Tract,Population 12-17,"Population, error",POP00,POP10,Unnamed: 2,Median Income,Median Income Error,Civilian Labor Force,Employed,Unemployed,% Change Pop,% Unemployment
+,geoid,Census Tract,Population 12-17,"Population, error",POP00,POP10,id,Median Income,Median Income Error,Civilian Labor Force,Employed,Unemployed,% Change Pop,% Unemployment
 0,14000US17031230600,"Census Tract 2306, Cook, IL",6606,748,7561,6818,17031230600,34716,3940,3091,2457,634,-12.630604417405106,20.511161436428342
 1,14000US17031231200,"Census Tract 2312, Cook, IL",6138,647,7500,6095,17031231200,29120,8497,2636,2295,341,-18.16,12.93626707132018
 2,14000US17031231500,"Census Tract 2315, Cook, IL",6699,1229,7624,6039,17031231500,28013,6082,2444,2105,339,-12.132738719832108,13.870703764320785
