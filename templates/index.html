@@ -73,9 +73,9 @@
   <p>Footer Text</p>
 </footer>
 <!-- API key -->
-<script type="text/javascript" src="https://raw.githubusercontent.com/andrewswellie/ProjectTwo_Opportunity-Zones-Investment-App/master/static/js/config.js"></script>
-<!-- Our JS -->
-<script type="text/javascript" src="https://raw.githubusercontent.com/andrewswellie/ProjectTwo_Opportunity-Zones-Investment-App/master/static/js/logic.js"></script>
+<!-- <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/mainpage.css') }}"> -->
+<script src="{{ url_for('static', filename='js/logic.js') }}"></script>
+<script src="{{ url_for('static', filename='js/config.js') }}"></script>
  <!--D3 cdn-->
  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.5.0/d3.min.js"></script>
  <script src="https://unpkg.com/leaflet@1.3.3/dist/leaflet.js"
