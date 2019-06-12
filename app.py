@@ -17,84 +17,57 @@ app = Flask(__name__)
 #################################################
 # Database Setup
 #################################################
-
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///db/opportunity_zones.sqlite"
-db = SQLAlchemy(app)
+engine = create_engine("sqlite:///db/opportunity_zones.sqlite")
 
 # reflect an existing database into a new model
 Base = automap_base()
+
 # reflect the tables
-Base.prepare(db.engine, reflect=True)
+Base.prepare(engine, reflect=True)
 
-# Save references to each table
-Samples_Metadata = Base.classes.sample_metadata
-Samples = Base.classes.samples
+# Save table reference to a variable
+api_data = Base.classes.api
+
+# Create the session link
+session = Session(engine)
 
 
+
+#################################################
+# Routes
+#################################################
+
+# Home Route
 @app.route("/")
 def index():
-    """Return the homepage."""
     return render_template("index.html")
 
+# API Route
+@app.route("/api/v1.0")
+def zones():
+    
+    # Query all the API table
+    results = session.query(api_data.tract, api_data.community_name, api_data.pop_12_17, api_data.pop_change, api_data.median_income, api_data.home_value, api_data.home_change, api_data.assoc_degree_or_higher, api_data.unemployment, api_data.poverty_rate, api_data.crimes_per_1000).all()
 
-@app.route("/names")
-def names():
-    """Return a list of sample names."""
+    # Create a dictionary from the row data and append to a list of zone_data
+    zone_data = []
+    for tract, name, pop, popChange, income, homeValue, homeChange, education, unemploy, poverty, crime in results:
+        zone_dict = {}
+        zone_dict["census_tract"] = tract
+        zone_dict["community_name"] = name
+        zone_dict["population"] = pop
+        zone_dict["pop_change_since2010"] = popChange
+        zone_dict["median_income"] = income
+        zone_dict["median_home_value"] = homeValue
+        zone_dict["home_value_change_since2010"] = homeChange
+        zone_dict["assoc_degree_or_higher"] = education
+        zone_dict["unemployment"] = unemploy
+        zone_dict["poverty"] = poverty
+        zone_dict["crimes_per_1000"] = crime
+        zone_data.append(zone_dict)
 
-    # Use Pandas to perform the sql query
-    stmt = db.session.query(Samples).statement
-    df = pd.read_sql_query(stmt, db.session.bind)
+    return jsonify(zone_data)
 
-    # Return a list of the column names (sample names)
-    return jsonify(list(df.columns)[2:])
-
-
-@app.route("/metadata/<sample>")
-def sample_metadata(sample):
-    """Return the MetaData for a given sample."""
-    sel = [
-        Samples_Metadata.sample,
-        Samples_Metadata.ETHNICITY,
-        Samples_Metadata.GENDER,
-        Samples_Metadata.AGE,
-        Samples_Metadata.LOCATION,
-        Samples_Metadata.BBTYPE,
-        Samples_Metadata.WFREQ,
-    ]
-
-    results = db.session.query(*sel).filter(Samples_Metadata.sample == sample).all()
-
-    # Create a dictionary entry for each row of metadata information
-    sample_metadata = {}
-    for result in results:
-        sample_metadata["sample"] = result[0]
-        sample_metadata["ETHNICITY"] = result[1]
-        sample_metadata["GENDER"] = result[2]
-        sample_metadata["AGE"] = result[3]
-        sample_metadata["LOCATION"] = result[4]
-        sample_metadata["BBTYPE"] = result[5]
-        sample_metadata["WFREQ"] = result[6]
-
-    print(sample_metadata)
-    return jsonify(sample_metadata)
-
-
-@app.route("/samples/<sample>")
-def samples(sample):
-    """Return `otu_ids`, `otu_labels`,and `sample_values`."""
-    stmt = db.session.query(Samples).statement
-    df = pd.read_sql_query(stmt, db.session.bind)
-
-    # Filter the data based on the sample number and
-    # only keep rows with values above 1
-    sample_data = df.loc[df[sample] > 1, ["otu_id", "otu_label", sample]]
-    # Format the data to send as json
-    data = {
-        "otu_ids": sample_data.otu_id.values.tolist(),
-        "sample_values": sample_data[sample].values.tolist(),
-        "otu_labels": sample_data.otu_label.tolist(),
-    }
-    return jsonify(data)
 
 
 if __name__ == "__main__":
