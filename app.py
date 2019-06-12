@@ -39,7 +39,7 @@ session = Session(engine)
 
 # Home Route
 @app.route("/")
-def index():
+def home():
     return render_template("index.html")
 
 # API Route
