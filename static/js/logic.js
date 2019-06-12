@@ -1,5 +1,5 @@
 // Store our API endpoint inside queryUrl
-var queryUrl = "https://github.com/andrewswellie/ProjectTwo_Opportunity-Zones-Investment-App/blob/master/boundaries.geojson";
+var queryUrl = "https://github.com/andrewswellie/ProjectTwo_Opportunity-Zones-Investment-App/blob/master/boundaries.geojson?raw=true";
 
 // Perform a GET request to the query URL
 d3.json(queryUrl, function(data) {
