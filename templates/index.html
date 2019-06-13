@@ -46,9 +46,9 @@
     <!-- Left and right controls -->
 <div class="jumbotron jumbotron-fluid">
         <div class="container">
-          <h1 class="display-4">Opportunity Zones Investment Tool</h1>
-          <p class="lead">Find the right opportunity for your next investment.</p>
-          <a class="btn btn-primary" href="https://cwru-opportunity-zones-tool.herokuapp.com/api/v1.0" role="button">Visit our API</a>
+          <h1 class="display-4">Opportunity Zones Comparison Tool</h1>
+          <p class="lead">Helping you determine where to invest next!</p>
+          <a class="btn btn-primary" href="https://cwru-opportunity-zones-tool.herokuapp.com/api/v1.0" role="button">View our API</a>
           <div id="thisid"></div>
         </div>
 </div>
@@ -56,27 +56,27 @@
 
   
 <div class="container text-center">    
-  <h3>What We Do</h3><br>
+  <h3>Select a Highlighted Zone for Comparison Data</h3><br>
   <div class="row">
     <div class="col-sm-8">
         <div id="map" style="width: 650px; height: 450px"></div>   
       
-      <p>Some text</p>
+      <p>Chicago Opportunity Zones</p>
     </div>
     <div class="col-sm-4">
       <div id= "graph" class="well" style="width: 450px; height: 250px">
        <p>Graph</p>
       </div>
       <div class="well" style="width: 450px">
-       <p>Some text..</p>
+       <p>Zone Grade</p>
       </div>
     </div>
   </div>
 </div><br>
 
-<footer class="container-fluid text-center">
-  <p>Footer Text</p>
-</footer>
+<div class="card-footer text-muted">
+  <p>Case Western Reserve University - Data Bootcamp Project 2 - Team 2</p>
+</div>
 <!-- API key -->
 <!-- <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/mainpage.css') }}"> -->
 <script type="text/javascript" src="{{ url_for('static', filename='js/logic.js') }}"></script>
