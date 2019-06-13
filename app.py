@@ -46,7 +46,7 @@ def home():
 @app.route("/api/v1.0")
 def zones():
     
-    # Query all the API table
+    # Query the API table
     results = session.query(api_data.tract, api_data.community_name, api_data.pop_12_17, api_data.pop_change, api_data.median_income, api_data.home_value, api_data.home_change, api_data.assoc_degree_or_higher, api_data.unemployment, api_data.poverty_rate, api_data.crimes_per_1000).all()
 
     # Create a dictionary from the row data and append to a list of zone_data
@@ -66,6 +66,7 @@ def zones():
         zone_dict["crimes_per_1000"] = crime
         zone_data.append(zone_dict)
 
+    console.log(zone_data)
     return jsonify(zone_data)
 
 
