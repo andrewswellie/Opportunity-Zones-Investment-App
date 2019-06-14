@@ -41,6 +41,8 @@ var svg = d3.select("#graph")
 var chartGroup = svg.append("g")
   .attr("transform", `translate(${chartMargin.left}, ${chartMargin.top})`);
 
+});
+
 // // Initial params
 // var chosenXAxis = "tract";
 // var chosenYAxis = "median_income";
