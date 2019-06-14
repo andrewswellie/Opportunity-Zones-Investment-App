@@ -24,8 +24,8 @@ var chartGroup = svg.append("g")
   .attr("transform", `translate(${chartMargin.left}, ${chartMargin.top})`);
 
 // Initial params
-var chosenXAxis = "Census Tract"
-var chosenYAxis = "Median Income";
+var chosenXAxis = "tract"
+var chosenYAxis = "median_income";
 
 // create scales
 function xScale(tractData, chosenXAxis) {
