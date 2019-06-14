@@ -1,9 +1,8 @@
 // Store our API endpoint inside queryUrl
-var queryUrl = "OppZones.geojson";
+var queryUrl = "https://raw.githubusercontent.com/andrewswellie/ProjectTwo_Opportunity-Zones-Investment-App/master/OppZones.geojson";
 
-
-  // Perform a GET request to the query URL
-  d3.json(queryUrl, function(data) {
+   // Perform a GET request to the query URL
+   d3.json(queryUrl, function(data) {
     // Once we get a response, send the data.features object to the createFeatures function
     createFeatures(data.features);
   
@@ -14,17 +13,35 @@ function createFeatures(tracts) {
     // Give each feature a popup describing the place and time of the earthquake
     function onEachFeature(feature, layer) {
       layer.bindPopup("<h3>" + feature.properties.namelsad10 +
-        "</h3><hr><p>" + feature.properties.community_name + "<br/>" +
-        " Poverty rate: " + feature.properties.poverty_rate + "<br/>" + 
-        " Median Home Value: " + feature.properties.home_value + "<br/>" +
-        "% Change Home Value: " + feature.properties.home_change + "<br/>" + 
+        "</h3><hr><b><p>" + feature.properties.community_name + "</b><br/><br/>" +
+        "Median Household Income: " + feature.properties.median_income + "<br/>" +
+        "Median Home Value: " + feature.properties.home_value + "<br/>" +
+        "Change in Median Home Value since 2010: " + feature.properties.home_change + "<br/>" +
+        "Population: " + feature.properties.pop_12_17 + "<br/>" +
+        "Poverty rate: " + feature.properties.poverty_rate + "<br/>" +
+        "Unemployment Rate: " + feature.properties.unemployment + "<br/>" +        
         "Crimes per 1000: " + feature.properties.crimes_per_1000 + "<br/>" + 
-        "Population: " + feature.properties.pop_12_17 + "<br/>" + 
-        "Median Income: " + feature.properties.median_income + "<br/>" + 
-        "Unemployment: " + feature.properties.unemployment + "<br/>" + 
-        "% Change Home Value: " + feature.properties.home_change + "<br/>" + 
         "Associates Degree or Higher: " + feature.properties.assoc_degree_or_higher + 
         "</p>");
+
+        layer.on({
+          // When a user's mouse touches a map feature, the mouseover event calls this function, that feature's opacity changes to 90% so that it stands out
+          mouseover: function(event) {
+            layer = event.target;
+            layer.setStyle({
+              fillOpacity: 0.9
+            });
+          },
+          // When the cursor no longer hovers over a map feature - when the mouseout event occurs - the feature's opacity reverts back to 50%
+          mouseout: function(event) {
+            layer = event.target;
+            layer.setStyle({
+              fillOpacity: 0.2
+            });
+          },
+         
+        });
+  
     }
 
     // Create a GeoJSON layer containing the features array on the tracts object
@@ -74,7 +91,7 @@ function createMap(tract) {
     center: [
       41.881832, -87.623177
     ],
-    zoom: 9.5,
+    zoom: 10.45,
     layers: [streetmap, tract]
   });
 
@@ -85,5 +102,3 @@ function createMap(tract) {
     collapsed: false
   }).addTo(myMap);
 }
-
-
