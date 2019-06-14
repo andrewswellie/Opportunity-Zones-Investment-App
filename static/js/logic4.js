@@ -1,40 +1,22 @@
-function unpack(rows, index) {
-return rows.map(function(row) {
-  return row[index];
-});
-}
+Plotly.d3.csv("https://raw.githubusercontent.com/andrewswellie/ProjectTwo_Opportunity-Zones-Investment-App/master/csv_raw_data/final_api_data.csv"), function(err, rows) {
+    function unpack(rows, key) {
+        return rows.map(function(row) {
+            return row[key];
+        });
+      }
 
-function buildPlot() {
-    d3.csv("https://raw.githubusercontent.com/andrewswellie/ProjectTwo_Opportunity-Zones-Investment-App/master/csv_raw_data/final_api_data.csv", function(demoData) {
-        console.log(demoData);
+    var Trace1 = {
+        type: "bar",
+        name: "Holy Shit This Better Work",
+        x: unpack(rows, "tract"),
+        y: unpack(rows, "median_income"),
+    }
 
-        demoData.forEach(function(demoData) {
-            demoData.tract = +demoData.tract;
-            demoData.median_income = +demoData.median_income;
-            
-          });
+    var data = [Trace1];
 
-  // Grab values from the data json object to build the plots
-//   console.log(demoData);
-//   console.log(data);
-  
-  var tract = demoData.tract;
-  var income = demoData.median_income;
-
-  console.log(tract);
-  console.log(income);
-  
-  var trace1 = {
-    type: "bar",
-    x: tract,
-    y: income,
+    var layout = {
+        title: "Fuck this graph"
     };
 
-  var data = [trace1];
-
-  Plotly.newPlot("graph", data);
-
-});
-
-
-buildPlot();}
+    Plotly.newPlot("graph", data, layout);
+};
