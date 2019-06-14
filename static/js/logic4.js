@@ -35,7 +35,7 @@ function buildPlot() {
 
   var data = [trace1];
 
-  Plotly.newPlot("plot", data);
+  Plotly.newPlot("graph", data);
 
 });
 }
