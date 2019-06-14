@@ -31,7 +31,32 @@ function createFeatures(tracts) {
 
   var tract = L.geoJSON(tracts, {
     onEachFeature: onEachFeature
+  },
+
+    onEachFeature: function(feature, layer) {
+      // Set mouse events to change map styling
+      layer.on({
+        // When a user's mouse touches a map feature, the mouseover event calls this function, that feature's opacity changes to 90% so that it stands out
+        mouseover: function(event) {
+          layer = event.target;
+          layer.setStyle({
+            fillOpacity: 0.9
+          });
+        },
+        // When the cursor no longer hovers over a map feature - when the mouseout event occurs - the feature's opacity reverts back to 50%
+        mouseout: function(event) {
+          layer = event.target;
+          layer.setStyle({
+            fillOpacity: 0.5
+          });
+        },
+        // When a feature (neighborhood) is clicked, it is enlarged to fit the screen
+        click: function(event) {
+          map.fitBounds(event.target.getBounds());
+        }
+      });
   });
+  
 
 
   // Sending our tract layer to the createMap function
@@ -73,9 +98,11 @@ var myMap = L.map("map", {
   center: [
     41.881832, -87.623177
   ],
-  zoom: 9.5,
+  zoom: 11,
   layers: [streetmap, tract]
 });
+
+
 
 // Create a layer control
 // Pass in our baseMaps and overlayMaps
