@@ -22,6 +22,9 @@ function buildPlot() {
   // Grab values from the data json object to build the plots
   var tract = data.tract;
   var income = data.median_income;
+
+  console.log(tract);
+  console.log(income);
   
   var trace1 = {
     type: "bar",
