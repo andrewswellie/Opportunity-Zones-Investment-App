@@ -45,7 +45,7 @@ function buildPlot() {
 
   Plotly.newPlot("graph", data);
 
-});
 }
+
 
 buildPlot();
