@@ -17,7 +17,7 @@ return rows.map(function(row) {
 
 function buildPlot() {
     d3.csv("https://raw.githubusercontent.com/andrewswellie/ProjectTwo_Opportunity-Zones-Investment-App/master/csv_raw_data/final_api_data.csv", function(demoData) {
-        console.log(data);
+        // console.log(demoData);
 
         demoData.forEach(function(data) {
             data.tract = +data.tract;
@@ -26,8 +26,11 @@ function buildPlot() {
           });
 
   // Grab values from the data json object to build the plots
-  var tract = demoData.tract;
-  var income = demoData.median_income;
+  console.log(demoData);
+  console.log(data);
+  
+  var tract = data.tract;
+  var income = data.median_income;
 
   console.log(tract);
   console.log(income);
