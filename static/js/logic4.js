@@ -1,7 +1,3 @@
-
- /* global Plotly */
-var url = "https://raw.githubusercontent.com/andrewswellie/ProjectTwo_Opportunity-Zones-Investment-App/master/csv_raw_data/final_api_data.csv";
-
 /**
 * Helper function to select stock data
 * Returns an array of values
@@ -20,11 +16,11 @@ return rows.map(function(row) {
 }
 
 function buildPlot() {
-d3v5.json(url).then(function(data) {
+    d3.csv("{{ url_for('csv_raw_data', filename='final_api_data.csv') }}", function(data) {
 
   // Grab values from the data json object to build the plots
-  var tract = data.dataset.census_tract;
-  var income = data.dataset.median_income;
+  var tract = data.census_tract;
+  var income = data.median_income;
   
   var trace1 = {
     type: "scatter",
