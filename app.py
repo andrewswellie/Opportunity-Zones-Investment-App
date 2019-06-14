@@ -66,9 +66,8 @@ def zones():
         zone_dict["crimes_per_1000"] = crime
         zone_data.append(zone_dict)
 
-    print (zone_data)
     return jsonify(zone_data)
-
+    print 
 
 
 if __name__ == "__main__":
