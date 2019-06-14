@@ -19,8 +19,8 @@ function buildPlot() {
     d3.csv("../../csv_raw_data/final_api_data.csv", function(data) {
 
   // Grab values from the data json object to build the plots
-  var tract = data.dataset.census_tract;
-  var income = data.dataset.median_income;
+  var tract = data.census_tract;
+  var income = data.median_income;
   
   var trace1 = {
     type: "bar",
