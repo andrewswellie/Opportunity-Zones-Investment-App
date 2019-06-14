@@ -13,7 +13,7 @@ function createFeatures(tracts) {
   // Give each feature a popup describing the place and time of the earthquake
   function onEachFeature(feature, layer) {
     layer.bindPopup("<h3>" + feature.properties.namelsad10 +
-      "<h4><hr><p>" + feature.properties.community_name + "<br/>" +
+      "</h3><hr><p><b>" + feature.properties.community_name + "</b><br/><br/>" +
       " Poverty rate: " + feature.properties.poverty_rate + "<br/>" + 
       " Median Home Value: " + feature.properties.home_value + "<br/>" +
       "% Change Home Value: " + feature.properties.home_change + "<br/>" + 
