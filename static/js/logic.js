@@ -14,14 +14,13 @@ function createFeatures(tracts) {
     function onEachFeature(feature, layer) {
       layer.bindPopup("<h3>" + feature.properties.namelsad10 +
         "</h3><hr><b><p>" + feature.properties.community_name + "</b><br/><br/>" +
-        " Poverty rate: " + feature.properties.poverty_rate + "<br/>" + 
-        " Median Home Value: " + feature.properties.home_value + "<br/>" +
-        "% Change Home Value: " + feature.properties.home_change + "<br/>" + 
+        "Median Household Income: " + feature.properties.median_income + "<br/>" +
+        "Median Home Value: " + feature.properties.home_value + "<br/>" +
+        "Change in Median Home Value since 2010: " + feature.properties.home_change + "<br/>" +
+        "Population: " + feature.properties.pop_12_17 + "<br/>" +
+        "Poverty rate: " + feature.properties.poverty_rate + "<br/>" +
+        "Unemployment Rate: " + feature.properties.unemployment + "<br/>" +        
         "Crimes per 1000: " + feature.properties.crimes_per_1000 + "<br/>" + 
-        "Population: " + feature.properties.pop_12_17 + "<br/>" + 
-        "Median Income: " + feature.properties.median_income + "<br/>" + 
-        "% Unemployment: " + feature.properties.unemployment + "<br/>" + 
-        "% Change Home Value: " + feature.properties.home_change + "<br/>" + 
         "Associates Degree or Higher: " + feature.properties.assoc_degree_or_higher + 
         "</p>");
     }
