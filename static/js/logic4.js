@@ -23,8 +23,7 @@ function buildPlot() {
   var income = data.median_income;
   
   var trace1 = {
-    type: "scatter",
-    mode: "lines",
+    type: "bar",
     name: tract,
     x: tract,
     y: income,

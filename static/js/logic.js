@@ -1,6 +1,7 @@
 // Store our API endpoint inside queryUrl
 var queryUrl = "https://raw.githubusercontent.com/andrewswellie/ProjectTwo_Opportunity-Zones-Investment-App/master/OppZones.geojson";
 
+  
    // Perform a GET request to the query URL
    d3.json(queryUrl, function(data) {
     // Once we get a response, send the data.features object to the createFeatures function
@@ -23,6 +24,25 @@ function createFeatures(tracts) {
         "Crimes per 1000: " + feature.properties.crimes_per_1000 + "<br/>" + 
         "Associates Degree or Higher: " + feature.properties.assoc_degree_or_higher + 
         "</p>");
+
+        layer.on({
+          // When a user's mouse touches a map feature, the mouseover event calls this function, that feature's opacity changes to 90% so that it stands out
+          mouseover: function(event) {
+            layer = event.target;
+            layer.setStyle({
+              fillOpacity: 0.9
+            });
+          },
+          // When the cursor no longer hovers over a map feature - when the mouseout event occurs - the feature's opacity reverts back to 50%
+          mouseout: function(event) {
+            layer = event.target;
+            layer.setStyle({
+              fillOpacity: 0.2
+            });
+          },
+         
+        });
+  
     }
 
     // Create a GeoJSON layer containing the features array on the tracts object
@@ -72,7 +92,7 @@ function createMap(tract) {
     center: [
       41.881832, -87.623177
     ],
-    zoom: 11,
+    zoom: 10.45,
     layers: [streetmap, tract]
   });
 
