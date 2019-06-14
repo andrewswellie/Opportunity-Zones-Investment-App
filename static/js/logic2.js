@@ -142,7 +142,7 @@ function updateToolTip(chosenXaxis, chosenYAxis) {
     // @TO DO insert API URL
 //var dataURL = ""
 // Load data from API
-d3.csv("../../csv_raw_data/final_api_data.csv").then(function(tractData){
+d3.csv("{{ url_for('csv_raw_data', filename='final_api_data.csv') }}").then(function(tractData){
     //console.log(data);
       // retrieve and parse data
         tractData.forEach(function(data) {
