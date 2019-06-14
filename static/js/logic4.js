@@ -1,6 +1,6 @@
 
  /* global Plotly */
-var url = "https://cwru-opportunity-zones-tool.herokuapp.com/api/v1.0";
+var url = "https://raw.githubusercontent.com/andrewswellie/ProjectTwo_Opportunity-Zones-Investment-App/master/csv_raw_data/final_api_data.csv";
 
 /**
 * Helper function to select stock data
