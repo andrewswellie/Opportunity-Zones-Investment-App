@@ -15,8 +15,8 @@ return rows.map(function(row) {
 });
 }
 
-function buildCharts() {
-    d3.csv("https://raw.githubusercontent.com/andrewswellie/ProjectTwo_Opportunity-Zones-Investment-App/master/csv_raw_data/final_api_data.csv", function(data) {
+function buildPlot() {
+    d3.csv("../../csv_raw_data/final_api_data.csv", function(data) {
 
   // Grab values from the data json object to build the plots
   var tract = data.dataset.census_tract;
@@ -39,4 +39,4 @@ function buildCharts() {
 });
 }
 
-buildCharts();
+buildPlot();
