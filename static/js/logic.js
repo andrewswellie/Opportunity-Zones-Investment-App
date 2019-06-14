@@ -40,9 +40,11 @@ function createFeatures(tracts) {
               fillOpacity: 0.2
             });
           },
-         
+          click: function(event) {
+            map.fitBounds(event.target.getBounds());
+          }
         });
-  
+           
     }
 
     // Create a GeoJSON layer containing the features array on the tracts object
