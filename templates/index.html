@@ -81,15 +81,15 @@
     <br>
     <div class="well">
       <h5>Select Metric:</h5>
-      <select id="selDataset" onchange="optionChanged(this.value)">
-        <option value="income">Median Household Income</option>
-        <option value="homeValue">Median Home Value</option>
-        <option value="homeChange">Change in Home Value</option>
+      <select id="selDataset" onchange="buildCharts(this.value)">
+        <option value="median_income">Median Household Income</option>
+        <option value="median_home_value">Median Home Value</option>
+        <option value="home_value_change_since2010">Change in Home Value</option>
         <option value="population">Population</option>
         <option value="poverty">Poverty Rate</option>
         <option value="unemployment">Unemployment Rate</option>
-        <option value="crime">Crime Rate</option>
-        <option value="education">Education</option>
+        <option value="crimes_per_1000">Crime Rate</option>
+        <option value="assoc_degree_or_higher">Education</option>
       </select>
     </div>
     <br>
@@ -109,7 +109,7 @@
 <!-- API key -->
 <!-- <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/mainpage.css') }}"> -->
 <script type="text/javascript" src="{{ url_for('static', filename='js/logic.js') }}"></script>
-<!-- <script type="text/javascript" src="{{ url_for('static', filename='js/logic3.js') }}"></script> -->
+<script type="text/javascript" src="{{ url_for('static', filename='js/logic4.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='js/config.js') }}"></script>
 </body>
 </html>
