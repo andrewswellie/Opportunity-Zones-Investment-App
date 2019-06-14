@@ -367,11 +367,11 @@ d3.csv("../../csv_raw_data/final_api_data.csv").then(function(tractData){
         ToolTip.show(data, this);
         d3.select(this)
             .attr("opacity", "1")
-    }
+    });
     barsGroup.on("mouseout", function(data) {
-        ToolTip.hide(data);
+        ToolTip.hide(data, this);
         d3.select(this)
             .attr("opacity", ".6")
-    }));
+    });
     return barsGroup;
 }
