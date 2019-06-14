@@ -16,7 +16,7 @@ return rows.map(function(row) {
 }
 
 function buildPlot() {
-    d3.csv("{{ url_for('csv_raw_data', filename='final_api_data.csv') }}", function(data) {
+    d3.csv("../../csv_raw_data/final_api_data.csv", function(data) {
         console.log(data);
 
   // Grab values from the data json object to build the plots
