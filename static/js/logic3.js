@@ -1,5 +1,20 @@
-andyTest = d3.csv("https://raw.githubusercontent.com/andrewswellie/ProjectTwo_Opportunity-Zones-Investment-App/master/csv_raw_data/final_api_data.csv")
-console.log(andyTest)
+d3.csv("https://raw.githubusercontent.com/andrewswellie/ProjectTwo_Opportunity-Zones-Investment-App/master/csv_raw_data/final_api_data.csv").then(function(tractData){
+    //console.log(data);
+      // retrieve and parse data
+        tractData.forEach(function(data) {
+            data.tract = +data.tract;
+            data.community_name = +data.community_name;
+            data.poverty_rate = +data.poverty_rate;
+            data.crimes_per_1000 = +data.crimes_per_1000;
+            data.median_income = +data.median_income;
+            data.assoc_degree_or_higher = +data.assoc_degree_or_higher;
+            data.unemployment = +data.unemployment;
+            data.home_value = +data.home_value;
+            data.home_change = +data.home_change;
+            data.pop_12_17 = +data.pop_12_17;
+            data.pop_change = +data.pop_change;
+        });
+      console.log(tractData)
 
 var svgWidth = 1170;
 var svgHeight = 560;
