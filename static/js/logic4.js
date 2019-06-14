@@ -16,7 +16,7 @@ return rows.map(function(row) {
 }
 
 function buildPlot() {
-    d3.csv("{{ url_for('csv_raw_data', filename='final_api_data.csv') }}", function(data) {
+    d3.csv("https://raw.githubusercontent.com/andrewswellie/ProjectTwo_Opportunity-Zones-Investment-App/master/csv_raw_data/final_api_data.csv", function(data) {
 
   // Grab values from the data json object to build the plots
   var tract = data.census_tract;
