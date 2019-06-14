@@ -33,7 +33,7 @@ function xScale(tractData, chosenXAxis) {
     .domain([d3.min(tractData, d =>[chosenXAxis]) * 0.8,
     d3.max(tractData, d => d[chosenXAxis]) * 1.2
 ])
-.range[0, width]);
+.range([0, width]);
 
 return xLinearScale;
 
@@ -43,7 +43,7 @@ return xLinearScale;
       .domain([d3.min(tractData, d =>[chosenYAxis]) * 0.8,
         d3.max(tractData, d => d[chosenYAxis]) * 1.2
     ])
-    .range[height, 0]);
+    .range([height, 0]);
 
     return yLinearScale
   }
@@ -70,14 +70,14 @@ function renderYAxes(newYScale, yAxis) {
 
 // function used for updating bar groups for x-axis with transition to new circles
 
-function renderbarsGroup (barsGroup, newYScale, chosenYAxis) (
+function renderbarsGroup (barsGroup, newYScale, chosenYAxis) {
     barsGroup.transition()
     .duration("500")
     //there might be an error here
     .attr("height", d => chartHeight - newYScale(d[chosenYAxis]));
 
     return barsGroup;
-)
+}
 
 
 
@@ -103,7 +103,7 @@ function updateToolTip(chosenXaxis, chosenYAxis) {
         
     }
     else if (chosenYaxis === "unemployment") {
-        var label = "Unemployment Rate
+        var label = "Unemployment Rate"
         var pct = "%"
         var dolla = ""
         
@@ -167,10 +167,10 @@ d3.csv("../../csv_raw_data/final_api_data.csv").then(function(tractData){
         //.padding(0.1);
       // Create a linear scale for the vertical axis.
         var yLinearScale = d3.scaleLinear()
-            .domain([d3., d3.max(tractData, d => d.median_income)])
+            .domain([0, d3.max(tractData, d => d.median_income)])
             .range([chartHeight, 0]);
         var xLinearScale = d3.scaleLinear()
-            .domain([d3., d3.max(tractData, d => d.tract)])
+            .domain([0, d3.max(tractData, d => d.tract)])
             .range([0, chartWidth]);
         
         // Create two new functions passing our scales in as arguments
@@ -202,7 +202,7 @@ d3.csv("../../csv_raw_data/final_api_data.csv").then(function(tractData){
             .attr("x", d => xLinearScale(d.tract))
             .attr("y", d => yLinearScale(d.median_income))
             .attr("width", xLinearScale.bandwidth())
-            .attr("height", d => chartHeight - yLinearScale(d.median_income));
+            .attr("height", d => chartHeight - yLinearScale(d.median_income))
             .attr("fill", "green")
             .attr("opacity", ".6")
     // create X axis
@@ -353,7 +353,7 @@ d3.csv("../../csv_raw_data/final_api_data.csv").then(function(tractData){
                 }
             });
         });
-        
+
     var toolTip = d3.tip()
         .attr("class", "d3-tip")
         .direction("w")
@@ -368,10 +368,10 @@ d3.csv("../../csv_raw_data/final_api_data.csv").then(function(tractData){
         d3.select(this)
             .attr("opacity", "1")
     }
-    barsGroup.on("mouseout", function(data, index) {
+    barsGroup.on("mouseout", function(data) {
         ToolTip.hide(data);
         d3.select(this)
             .attr("opacity", ".6")
-    });
+    }));
     return barsGroup;
 }
