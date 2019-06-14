@@ -20,7 +20,7 @@ return rows.map(function(row) {
 }
 
 function buildPlot() {
-d3.json(url).then(function(data) {
+d3v5.json(url).then(function(data) {
 
   // Grab values from the data json object to build the plots
   var tract = data.dataset.census_tract;
