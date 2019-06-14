@@ -1,30 +1,45 @@
 // Store our API endpoint inside queryUrl
-var queryUrl = "boundaries.geojson";
+var queryUrl = "OppZones.geojson";
 
-// Perform a GET request to the query URL
-d3.json(queryUrl, function(data) {
-  // Once we get a response, send the data.features object to the createFeatures function
-  createFeatures(data.features);
-});
+
+  // Perform a GET request to the query URL
+  d3.json(queryUrl, function(data) {
+    // Once we get a response, send the data.features object to the createFeatures function
+    createFeatures(data.features);
+  
 
 function createFeatures(tracts) {
 
-  // Define a function we want to run once for each feature in the features array
-  // Give each feature a popup describing the place and time of the earthquake
-  function onEachFeature(feature, layer) {
-    layer.bindPopup("<h3>" + feature.properties.namelsad10 +
-      "</h3><hr><p>" + feature.properties.namelsad10 + "</p>");
+    // Define a function we want to run once for each feature in the features array
+    // Give each feature a popup describing the place and time of the earthquake
+    function onEachFeature(feature, layer) {
+      layer.bindPopup("<h3>" + feature.properties.namelsad10 +
+        "</h3><hr><p>" + feature.properties.community_name + "<br/>" +
+        " Poverty rate: " + feature.properties.poverty_rate + "<br/>" + 
+        " Median Home Value: " + feature.properties.home_value + "<br/>" +
+        "% Change Home Value: " + feature.properties.home_change + "<br/>" + 
+        "Crimes per 1000: " + feature.properties.crimes_per_1000 + "<br/>" + 
+        "Population: " + feature.properties.pop_12_17 + "<br/>" + 
+        "Median Income: " + feature.properties.median_income + "<br/>" + 
+        "Unemployment: " + feature.properties.unemployment + "<br/>" + 
+        "% Change Home Value: " + feature.properties.home_change + "<br/>" + 
+        "Associates Degree or Higher: " + feature.properties.assoc_degree_or_higher + 
+        "</p>");
+    }
+
+    // Create a GeoJSON layer containing the features array on the tracts object
+    // Run the onEachFeature function once for each piece of data in the array
+
+    var tract = L.geoJSON(tracts, {
+      onEachFeature: onEachFeature
+    });
+
+
+    // Sending our tract layer to the createMap function
+    createMap(tract);
   }
 
-  // Create a GeoJSON layer containing the features array on the tracts object
-  // Run the onEachFeature function once for each piece of data in the array
-  var tract = L.geoJSON(tracts, {
-    onEachFeature: onEachFeature
-  });
-
-  // Sending our tract layer to the createMap function
-  createMap(tract);
-}
+  })
 
 function createMap(tract) {
 
@@ -70,3 +85,5 @@ function createMap(tract) {
     collapsed: false
   }).addTo(myMap);
 }
+
+
