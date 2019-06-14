@@ -25,13 +25,9 @@ function buildPlot() {
   
   var trace1 = {
     type: "bar",
-    name: tract,
     x: tract,
     y: income,
-    line: {
-      color: "#17BECF"
-    }
-  };
+    };
 
   var data = [trace1];
 
