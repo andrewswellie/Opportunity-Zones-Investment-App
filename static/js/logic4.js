@@ -16,12 +16,18 @@ return rows.map(function(row) {
 }
 
 function buildPlot() {
-    d3.csv("https://raw.githubusercontent.com/andrewswellie/ProjectTwo_Opportunity-Zones-Investment-App/master/csv_raw_data/final_api_data.csv", function(data) {
+    d3.csv("https://raw.githubusercontent.com/andrewswellie/ProjectTwo_Opportunity-Zones-Investment-App/master/csv_raw_data/final_api_data.csv", function(demoData) {
         console.log(data);
 
+        demoData.forEach(function(data) {
+            data.tract = +data.tract;
+            data.median_income = +data.median_income;
+            
+          });
+
   // Grab values from the data json object to build the plots
-  var tract = data.tract;
-  var income = data.median_income;
+  var tract = demoData.tract;
+  var income = demoData.median_income;
 
   console.log(tract);
   console.log(income);
