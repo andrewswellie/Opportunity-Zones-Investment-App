@@ -70,10 +70,3 @@ function createMap(tract) {
     collapsed: false
   }).addTo(myMap);
 }
-
-
-
-
-
-  
-
