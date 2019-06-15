@@ -18,23 +18,23 @@
         title: "Median Household Income",
     
         xaxis: {
-            autotick: false,
-            ticks: 'outside',
-            tick0: 0,
-            dtick: 0.25,
-            ticklen: 8,
-            tickwidth: 4,
-            tickcolor: '#000'
-        },
-        yaxis: {
-            autotick: false,
-            ticks: 'outside',
-            tick0: 0,
-            dtick: 0.25,
-            ticklen: 8,
-            tickwidth: 4,
-            tickcolor: '#000'
-        }
+            showgrid: true,
+            showline: true,
+            mirror: 'ticks',
+            gridcolor: '#bdbdbd',
+            gridwidth: 2,
+            linecolor: '#636363',
+            linewidth: 15
+          },
+          yaxis: {
+            showgrid: true,
+            showline: true,
+            mirror: 'ticks',
+            gridcolor: '#bdbdbd',
+            gridwidth: 2,
+            linecolor: '#636363',
+            linewidth: 6
+          }
     };
 
     Plotly.newPlot("graph", data, layout);
