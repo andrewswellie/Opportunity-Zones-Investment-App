@@ -11,6 +11,8 @@ function buildCharts(value) {
     // Once we get a response, send the data.features object to the createFeatures function
     console.log(data);
 
+    data = [trace1]
+
     var tract = data.map(row => row.tract)
     var income = data.map(row => row.median_income)
     var median_home = data.map(row => row.home_value)
@@ -1020,11 +1022,10 @@ function buildCharts(value) {
     else data = [trace1]
 
 
-    Plotly.plot('graph', {
-        data: data,
-        layout: layout
-
 },)
 
+Plotly.plot('graph', {
+    data: data,
+    layout: layout
 });
 }
