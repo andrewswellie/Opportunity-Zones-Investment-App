@@ -16,24 +16,61 @@ trace1 = {
   };
   data = [trace1];
   layout = {
-    title: "Median Household Income Per Census Tract",
     autosize: true, 
-    bargap: .2, 
+    bargap: 0.28, 
     barmode: 'group', 
     barnorm: '', 
-    plot_bgcolor: 'rgb(230, 224, 224)', 
+    font: {size: 14}, 
+    margin: {
+      r: 13, 
+      t: 40, 
+      b: 51, 
+      l: 21, 
+      pad: 0
+    }, 
+    paper_bgcolor: 'rgb(224, 219, 219)', 
+    plot_bgcolor: 'rgb(235, 226, 226)', 
     showlegend: false, 
+    title: {text: 'Median Household Income by Census Tract'}, 
     xaxis: {
       autorange: true, 
+      dtick: 2, 
+      fixedrange: true, 
+      gridwidth: 0, 
+      nticks: 0, 
       range: [-0.5, 134.5], 
+      showgrid: true, 
+      tickfont: {
+        family: 'Roboto', 
+        size: 11
+      }, 
+      ticklen: 4, 
+      tickmode: 'linear', 
       ticks: 'outside', 
-      title: {text: 'Census Tract'}, 
+      title: {
+        font: {
+          size: 17, 
+          family: 'Roboto'
+        }, 
+        text: 'Census Tract'
+      }, 
       type: 'category'
     }, 
     yaxis: {
       autorange: true, 
+      dtick: 28, 
       range: [0, 66447.36842105263], 
-      title: {text: 'Median Household Income'}, 
+      separatethousands: false, 
+      tick0: 9, 
+      tickfont: {
+        family: 'Roboto', 
+        size: 11
+      }, 
+      tickmode: 'auto', 
+      title: {
+        font: {family: 'Roboto'}, 
+        text: 'Median Household Income'
+      }, 
       type: 'linear'
     }
   };
