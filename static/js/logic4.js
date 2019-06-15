@@ -6,8 +6,7 @@
 //       }
 
 function buildCharts(value) {
-   console.log(value)
-
+  
    d3.csv("https://raw.githubusercontent.com/andrewswellie/ProjectTwo_Opportunity-Zones-Investment-App/master/csv_raw_data/final_api_data.csv", function(data) {
     // Once we get a response, send the data.features object to the createFeatures function
     console.log(data);
@@ -1024,7 +1023,7 @@ function buildCharts(value) {
 
 
 
-data = buildCharts();
+data = [buildCharts()];
 
 
   Plotly.plot('graph', {
