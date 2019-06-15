@@ -22,7 +22,7 @@ trace1 = {
     barmode: 'group', 
     barnorm: '', 
     plot_bgcolor: 'rgb(230, 224, 224)', 
-    showlegend: true, 
+    showlegend: false, 
     xaxis: {
       autorange: true, 
       range: [-0.5, 134.5], 
