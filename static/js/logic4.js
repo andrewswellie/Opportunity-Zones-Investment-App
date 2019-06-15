@@ -8,6 +8,21 @@
 function buildCharts(value) {
    console.log(value)
 
+   d3.csv("https://raw.githubusercontent.com/andrewswellie/ProjectTwo_Opportunity-Zones-Investment-App/master/csv_raw_data/final_api_data.csv", function(data) {
+    // Once we get a response, send the data.features object to the createFeatures function
+    console.log(data);
+
+    var tract = data.map(row => row.tract)
+    var income = data.map(row => row.median_income)
+    var median_home = data.map(row => row.home_value)
+    var home_change = data.map(row => row.home_change)
+    var population = data.map(row => row.pop_12_17)
+    var pop_change = data.map(row => row.pop_change)
+    var poverty = data.map(row => row.poverty_rate)
+    var unemployment = data.map(row => row.unemployment)
+    var crime = data.map(row => row.crimes_per_1000)
+    var education = data.map(row => row.assoc_degree_or_higher)
+
    trace1 = {
     x: tract,
     y: income,
@@ -1005,27 +1020,10 @@ function buildCharts(value) {
     }
     else trace1
 
-}
+},)
 
 
-d3.csv("https://raw.githubusercontent.com/andrewswellie/ProjectTwo_Opportunity-Zones-Investment-App/master/csv_raw_data/final_api_data.csv", function(data) {
-    // Once we get a response, send the data.features object to the createFeatures function
-    console.log(data);
 
-    var tract = data.map(row => row.tract)
-    var income = data.map(row => row.median_income)
-    var median_home = data.map(row => row.home_value)
-    var home_change = data.map(row => row.home_change)
-    var population = data.map(row => row.pop_12_17)
-    var pop_change = data.map(row => row.pop_change)
-    var poverty = data.map(row => row.poverty_rate)
-    var unemployment = data.map(row => row.unemployment)
-    var crime = data.map(row => row.crimes_per_1000)
-    var education = data.map(row => row.assoc_degree_or_higher)
-
-    console.log(tract, income, median_home, home_change, population, pop_change, poverty, unemployment, crime, education)
-
-    
 data = buildCharts();
 
 
@@ -1033,4 +1031,4 @@ data = buildCharts();
     data: data,
     layout: layout
   });
-})
+}
