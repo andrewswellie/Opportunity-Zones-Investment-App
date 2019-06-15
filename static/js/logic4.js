@@ -663,7 +663,7 @@ function buildCharts(value) {
       ticksuffix: '%',
       title: {
         font: {family: 'Roboto'},
-        text: 'Median Household Income ($)'
+        text: 'Poverty Rate (%)'
       },
       type: 'linear'
     }
@@ -1032,6 +1032,10 @@ function buildCharts(value) {
     else if (value === "education") {
         data = [trace9];
         layout = layout9;  
+    }
+    else {
+        data = [trace9];
+        layout = layout9;
     }
     
     
