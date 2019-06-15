@@ -19,6 +19,7 @@ function createFeatures(tracts) {
         "Median Home Value: " + feature.properties.home_value + "<br/>" +
         "Change in Median Home Value since 2010: " + feature.properties.home_change + "<br/>" +
         "Population: " + feature.properties.pop_12_17 + "<br/>" +
+        "Population Change since 2000: " + feature.properties.pop_change + "<br/>" +
         "Poverty rate: " + feature.properties.poverty_rate + "<br/>" +
         "Unemployment Rate: " + feature.properties.unemployment + "<br/>" +        
         "Crimes per 1000: " + feature.properties.crimes_per_1000 + "<br/>" + 
