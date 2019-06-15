@@ -37,7 +37,7 @@ function buildCharts(value) {
   };
 
  
-  layout = {
+  layout1 = {
     autosize: false, 
     bargap: 0.15000000000000002, 
     barmode: 'group', 
@@ -144,7 +144,7 @@ function buildCharts(value) {
   };
 
  
-  layout = {
+  layout2 = {
     autosize: false, 
     bargap: 0.15000000000000002, 
     barmode: 'group', 
@@ -251,7 +251,7 @@ function buildCharts(value) {
   };
 
  
-  layout = {
+  layout3 = {
     autosize: false, 
     bargap: 0.15000000000000002, 
     barmode: 'group', 
@@ -358,7 +358,7 @@ function buildCharts(value) {
   };
 
  
-  layout = {
+  layout4 = {
     autosize: false, 
     bargap: 0.15000000000000002, 
     barmode: 'group', 
@@ -465,7 +465,7 @@ function buildCharts(value) {
   };
 
  
-  layout = {
+  layout5 = {
     autosize: false, 
     bargap: 0.15000000000000002, 
     barmode: 'group', 
@@ -572,7 +572,7 @@ function buildCharts(value) {
   };
  
  
-  layout = {
+  layout6 = {
     autosize: false,
     bargap: 0.15000000000000002,
     barmode: 'group',
@@ -680,7 +680,7 @@ function buildCharts(value) {
    };
   
   
-   layout = {
+   layout7 = {
      autosize: false,
      bargap: 0.15000000000000002,
      barmode: 'group',
@@ -789,7 +789,7 @@ function buildCharts(value) {
    };
   
   
-   layout = {
+   layout8 = {
      autosize: false,
      bargap: 0.15000000000000002,
      barmode: 'group',
@@ -897,7 +897,7 @@ function buildCharts(value) {
    };
   
   
-   layout = {
+   layout9 = {
      autosize: false,
      bargap: 0.15000000000000002,
      barmode: 'group',
@@ -993,32 +993,44 @@ function buildCharts(value) {
 
      if (value === "income") {
         data = [trace1];
+        layout = layout1;
     }
     else if (value === "median_home") {
         data = [trace2];
+        layout = layout2;
     }
     else if (value === "home_change") {
         data = [trace3];
+        layout = layout3;
     }
     else if (value === "population") {
         data = [trace4];
+        layout = layout4;
     }
     else if (value === "pop_change") {
         data = [trace5];
+        layout = layout5;
     }
     else if (value === "poverty") {
         data = [trace6];
+        layout = layout6;
     }
     else if (value === "unemployment") {
         data = [trace7];
+        layout = layout7;
     }
     else if (value === "crime") {
         data = [trace8];
+        layout = layout8;
     }
     else if (value === "education") {
-        data = [trace9];  
+        data = [trace9];
+        layout = layout9;  
     }
-    else data = [trace1]
+    else {
+        data = [trace1];
+        layout = layout1;
+    }
 
     Plotly.newPlot('graph', {
         data: data,
@@ -1039,8 +1051,7 @@ trace1 = {
     xsrc: 'andrewswellie:0:7c7a4a', 
     ysrc: 'andrewswellie:0:6aa06d'
   };
-  data = [trace1];
-  layout = {
+  layout1 = {
     autosize: false, 
     bargap: 0.15000000000000002, 
     barmode: 'group', 
@@ -1133,5 +1144,5 @@ trace1 = {
   };
   Plotly.plot('graph', {
     data: [trace1],
-    layout: layout
+    layout: layout1
   });
