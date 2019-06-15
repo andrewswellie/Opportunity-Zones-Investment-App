@@ -5,8 +5,8 @@
 //         });
 //       }
 
-buildCharts()
-   
+function buildCharts(value) {
+   console.log(value)
 
      if (value === "income") {
         trace1;
@@ -37,6 +37,7 @@ buildCharts()
     }
     else trace1
 
+}
 
 
 d3.csv("https://raw.githubusercontent.com/andrewswellie/ProjectTwo_Opportunity-Zones-Investment-App/master/csv_raw_data/final_api_data.csv", function(data) {
