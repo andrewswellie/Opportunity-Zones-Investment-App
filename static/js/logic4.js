@@ -1,9 +1,13 @@
-// Plotly.d3.csv("https://raw.githubusercontent.com/andrewswellie/ProjectTwo_Opportunity-Zones-Investment-App/master/csv_raw_data/final_api_data.csv"), function(err, rows) {
+// Plotly.d3.csv("https://raw.githubusercontent.com/andrewswellie/ProjectTwo_Opportunity-Zones-Investment-App/master/csv_raw_data/final_api_data.csv"), function(data) {
 //     function unpack(rows, key) {
 //         return rows.map(function(row) {
 //             return row[key];
 //         });
 //       }
+
+d3.csv("https://raw.githubusercontent.com/andrewswellie/ProjectTwo_Opportunity-Zones-Investment-App/master/csv_raw_data/final_api_data.csv", function(data) {
+    // Once we get a response, send the data.features object to the createFeatures function
+    console.log(data)
 
 trace1 = {
     x: ['843600', '843300', '843000', '842900', '842100', '841800', '841500', '841400', '841000', '838800', '838700', '838600', '837000', '836900', '836100', '836000', '835900', '835500', '835000', '834900', '834800', '834700', '834600', '834500', '834400', '834300', '834200', '834000', '750600', '711400', '711000', '710500', '710300', '710200', '710100', '691500', '691400', '691300', '691100', '691000', '690300', '681300', '681200', '681000', '680900', '680600', '680500', '671800', '671600', '671500', '671400', '671200', '671100', '670800', '670700', '670600', '670500', '670400', '670200', '670100', '660900', '660800', '660700', '660600', '660301', '611900', '611800', '611700', '611600', '611200', '611100', '611000', '540101', '530502', '530200', '520200', '500300', '500200', '500100', '491400', '491300', '490901', '470100', '460500', '460400', '460302', '460301', '460200', '460100', '440201', '431302', '431301', '430900', '430600', '430400', '430300', '430200', '430101', '420800', '420700', '420600', '420500', '400800', '400500', '400400', '400300', '390300', '381400', '380500', '380100', '351500', '351400', '351100', '350100', '340600', '301200', '292500', '292200', '291200', '290900', '280900', '280400', '271800', '271300', '271200', '270500', '260600', '260200', '251900', '251800', '251500', '251300', '231500', '231200', '230600'], 
@@ -17,7 +21,9 @@ trace1 = {
     xsrc: 'andrewswellie:0:7c7a4a', 
     ysrc: 'andrewswellie:0:6aa06d'
   };
+
   data = [trace1];
+
   layout = {
     autosize: false, 
     bargap: 0.15000000000000002, 
@@ -50,6 +56,7 @@ trace1 = {
       text: 'Median Household Income by Census Tract'
     }, 
     width: 1170, 
+
     xaxis: {
       automargin: true, 
       autorange: true, 
@@ -85,6 +92,7 @@ trace1 = {
       }, 
       type: 'category'
     }, 
+
     yaxis: {
       autorange: true, 
       dtick: 28, 
