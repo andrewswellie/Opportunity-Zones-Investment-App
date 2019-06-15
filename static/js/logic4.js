@@ -336,7 +336,8 @@ function buildCharts(value) {
         size: 11
       }, 
       tickmode: 'auto', 
-      tickprefix: '$', 
+      tickprefix: '',
+      ticksuffix: '%',
       title: {
         font: {family: 'Roboto'}, 
         text: 'Change in Home Value since 2010'
@@ -443,7 +444,7 @@ function buildCharts(value) {
         size: 11
       }, 
       tickmode: 'auto', 
-      tickprefix: '$', 
+      tickprefix: '', 
       title: {
         font: {family: 'Roboto'}, 
         text: 'Population'
@@ -550,7 +551,8 @@ function buildCharts(value) {
         size: 11
       }, 
       tickmode: 'auto', 
-      tickprefix: '$', 
+      tickprefix: '', 
+      ticksuffix: '%',
       title: {
         font: {family: 'Roboto'}, 
         text: 'Population Change since 2000'
@@ -657,7 +659,8 @@ function buildCharts(value) {
         size: 11
       },
       tickmode: 'auto',
-      tickprefix: '$',
+      tickprefix: '',
+      ticksuffix: '%',
       title: {
         font: {family: 'Roboto'},
         text: 'Median Household Income ($)'
@@ -765,7 +768,8 @@ function buildCharts(value) {
          size: 11
        },
        tickmode: 'auto',
-       tickprefix: '$',
+       tickprefix: '',
+       ticksuffix: '%',
        title: {
          font: {family: 'Roboto'},
          text: 'Unemployment Rate (%)'
@@ -874,7 +878,8 @@ function buildCharts(value) {
          size: 11
        },
        tickmode: 'auto',
-       tickprefix: '$',
+       tickprefix: '',
+       ticksuffix: '%',
        title: {
          font: {family: 'Roboto'},
          text: 'Crimes per 1000 people'
@@ -982,7 +987,8 @@ function buildCharts(value) {
          size: 11
        },
        tickmode: 'auto',
-       tickprefix: '$',
+       tickprefix: '',
+       ticksuffix: '%',
        title: {
          font: {family: 'Roboto'},
          text: "Percent with Associate's Degree or Higher"
