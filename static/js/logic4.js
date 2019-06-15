@@ -879,7 +879,7 @@ function buildCharts(value) {
        },
        tickmode: 'auto',
        tickprefix: '',
-       ticksuffix: '%',
+       ticksuffix: '',
        title: {
          font: {family: 'Roboto'},
          text: 'Crimes per 1000 people'
@@ -1033,10 +1033,8 @@ function buildCharts(value) {
         data = [trace9];
         layout = layout9;  
     }
-    else {
-        data = [trace1];
-        layout = layout1;
-    }
+    
+    
 
     Plotly.newPlot('graph', {
         data: data,
