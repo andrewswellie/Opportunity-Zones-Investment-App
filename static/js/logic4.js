@@ -9,7 +9,7 @@ d3.csv("https://raw.githubusercontent.com/andrewswellie/ProjectTwo_Opportunity-Z
     // Once we get a response, send the data.features object to the createFeatures function
     console.log(data);
 
-    var tract = data.map(row => row.census_tract)
+    var tract = data.map(row => row.tract)
     var income = []
     var median_home = []
     var home_change = []
