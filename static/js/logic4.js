@@ -8,59 +8,7 @@
 function buildCharts(value) {
    console.log(value)
 
-     if (value === "income") {
-        trace1;
-    }
-    else if (value === "median_home") {
-        trace2;
-    }
-    else if (value === "home_change") {
-        trace3;
-    }
-    else if (value === "population") {
-        trace4;
-    }
-    else if (value === "pop_change") {
-        trace5;
-    }
-    else if (value === "poverty") {
-        trace6;
-    }
-    else if (value === "unemployment") {
-        trace7;
-    }
-    else if (value === "crime") {
-        trace8;
-    }
-    else if (value === "education") {
-        trace9;  
-    }
-    else trace1
-
-}
-
-
-d3.csv("https://raw.githubusercontent.com/andrewswellie/ProjectTwo_Opportunity-Zones-Investment-App/master/csv_raw_data/final_api_data.csv", function(data) {
-    // Once we get a response, send the data.features object to the createFeatures function
-    console.log(data);
-
-    var tract = data.map(row => row.tract)
-    var income = data.map(row => row.median_income)
-    var median_home = data.map(row => row.home_value)
-    var home_change = data.map(row => row.home_change)
-    var population = data.map(row => row.pop_12_17)
-    var pop_change = data.map(row => row.pop_change)
-    var poverty = data.map(row => row.poverty_rate)
-    var unemployment = data.map(row => row.unemployment)
-    var crime = data.map(row => row.crimes_per_1000)
-    var education = data.map(row => row.assoc_degree_or_higher)
-
-    console.log(tract, income, median_home, home_change, population, pop_change, poverty, unemployment, crime, education)
-
-    
-data = buildCharts();
-
-trace1 = {
+   trace1 = {
     x: tract,
     y: income,
     hoverinfo: 'x+y', 
@@ -1027,6 +975,60 @@ trace1 = {
        type: 'linear'
      }
    };
+
+     if (value === "income") {
+        trace1;
+    }
+    else if (value === "median_home") {
+        trace2;
+    }
+    else if (value === "home_change") {
+        trace3;
+    }
+    else if (value === "population") {
+        trace4;
+    }
+    else if (value === "pop_change") {
+        trace5;
+    }
+    else if (value === "poverty") {
+        trace6;
+    }
+    else if (value === "unemployment") {
+        trace7;
+    }
+    else if (value === "crime") {
+        trace8;
+    }
+    else if (value === "education") {
+        trace9;  
+    }
+    else trace1
+
+}
+
+
+d3.csv("https://raw.githubusercontent.com/andrewswellie/ProjectTwo_Opportunity-Zones-Investment-App/master/csv_raw_data/final_api_data.csv", function(data) {
+    // Once we get a response, send the data.features object to the createFeatures function
+    console.log(data);
+
+    var tract = data.map(row => row.tract)
+    var income = data.map(row => row.median_income)
+    var median_home = data.map(row => row.home_value)
+    var home_change = data.map(row => row.home_change)
+    var population = data.map(row => row.pop_12_17)
+    var pop_change = data.map(row => row.pop_change)
+    var poverty = data.map(row => row.poverty_rate)
+    var unemployment = data.map(row => row.unemployment)
+    var crime = data.map(row => row.crimes_per_1000)
+    var education = data.map(row => row.assoc_degree_or_higher)
+
+    console.log(tract, income, median_home, home_change, population, pop_change, poverty, unemployment, crime, education)
+
+    
+data = buildCharts();
+
+
   Plotly.plot('graph', {
     data: data,
     layout: layout
