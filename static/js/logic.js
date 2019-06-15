@@ -92,9 +92,9 @@ function createMap(tract) {
   // Create our map, giving it the streetmap and tract layers to display on load
   var myMap = L.map("map", {
     center: [
-      41.881832, -87.623177
+      41.827563, -87.685170
     ],
-    zoom: 12,
+    zoom: 14,
     layers: [streetmap, tract]
   });
 
