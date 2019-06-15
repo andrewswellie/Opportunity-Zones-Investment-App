@@ -16,12 +16,13 @@ trace1 = {
   };
   data = [trace1];
   layout = {
+    title: "Median Household Income Per Census Tract",
     autosize: true, 
-    bargap: 0, 
+    bargap: 1, 
     barmode: 'group', 
     barnorm: '', 
     plot_bgcolor: 'rgb(230, 224, 224)', 
-    showlegend: false, 
+    showlegend: true, 
     xaxis: {
       autorange: true, 
       range: [-0.5, 134.5], 
