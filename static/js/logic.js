@@ -94,7 +94,7 @@ function createMap(tract) {
     center: [
       41.827563, -87.685170
     ],
-    zoom: 14,
+    zoom: 12,
     layers: [streetmap, tract]
   });
 
