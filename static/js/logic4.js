@@ -991,43 +991,40 @@ function buildCharts(value) {
    };
 
      if (value === "income") {
-        trace1;
+        data = [trace1];
     }
     else if (value === "median_home") {
-        trace2;
+        data = [trace2];
     }
     else if (value === "home_change") {
-        trace3;
+        data = [trace3];
     }
     else if (value === "population") {
-        trace4;
+        data = [trace4];
     }
     else if (value === "pop_change") {
-        trace5;
+        data = [trace5];
     }
     else if (value === "poverty") {
-        trace6;
+        data = [trace6];
     }
     else if (value === "unemployment") {
-        trace7;
+        data = [trace7];
     }
     else if (value === "crime") {
-        trace8;
+        data = [trace8];
     }
     else if (value === "education") {
-        trace9;  
+        data = [trace9];  
     }
-    else trace1
+    else data = [trace1]
+
+
+    Plotly.plot('graph', {
+        data: data,
+        layout: layout
 
 },)
 
-
-
-data = [buildCharts()];
-
-
-  Plotly.plot('graph', {
-    data: data,
-    layout: layout
-  });
+});
 }
