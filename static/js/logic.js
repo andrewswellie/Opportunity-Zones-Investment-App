@@ -42,7 +42,7 @@ function createFeatures(tracts) {
             });
           },
           click: function(event) {
-            map.fitBounds(event.target.getBounds());
+            map.fitBounds(event.getBounds());
           }
         });
            
