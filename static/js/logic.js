@@ -41,12 +41,9 @@ function createFeatures(tracts) {
               fillOpacity: 0.2
             });
           },
-          click: function(event) {
-            map.fitBounds(event.getBounds());
-          }
-        });
-           
-    }
+          click: map.fitBounds(layer, getBounds()),
+        }
+        )}
 
     // Create a GeoJSON layer containing the features array on the tracts object
     // Run the onEachFeature function once for each piece of data in the array
@@ -60,7 +57,7 @@ function createFeatures(tracts) {
     createMap(tract);
   }
 
-  })
+})
 
 function createMap(tract) {
 
