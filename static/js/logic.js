@@ -79,7 +79,7 @@ function createMap(tract) {
 
   // Define a baseMaps object to hold our base layers
   var baseMaps = {
-    "Street Map": streetmap,
+    "Street View": streetmap,
     "Satellite View": lightmap
   };
 
