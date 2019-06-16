@@ -41,9 +41,10 @@ function createFeatures(tracts) {
               fillOpacity: 0.2
             });
           },
-          click: map.fitBounds(layer, getBounds()),
-        }
-        )}
+         
+        });
+  
+    }
 
     // Create a GeoJSON layer containing the features array on the tracts object
     // Run the onEachFeature function once for each piece of data in the array
@@ -57,7 +58,7 @@ function createFeatures(tracts) {
     createMap(tract);
   }
 
-})
+  })
 
 function createMap(tract) {
 
@@ -72,14 +73,14 @@ function createMap(tract) {
   var lightmap = L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}", {
     attribution: "Map data &copy; <a href=\"https://www.openstreetmap.org/\">OpenStreetMap</a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a>, Imagery © <a href=\"https://www.mapbox.com/\">Mapbox</a>",
     maxZoom: 18,
-    id: "mapbox.light",
+    id: "mapbox.satellite",
     accessToken: API_KEY
   });
 
   // Define a baseMaps object to hold our base layers
   var baseMaps = {
     "Street Map": streetmap,
-    "Light Map": lightmap
+    "Satellite View": lightmap
   };
 
   // Create overlay object to hold our overlay layer
@@ -90,9 +91,9 @@ function createMap(tract) {
   // Create our map, giving it the streetmap and tract layers to display on load
   var myMap = L.map("map", {
     center: [
-      41.827563, -87.685170
+      41.881832, -87.623177
     ],
-    zoom: 12,
+    zoom: 10.45,
     layers: [streetmap, tract]
   });
 
