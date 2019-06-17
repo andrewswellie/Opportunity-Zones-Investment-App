@@ -114,7 +114,7 @@ var queryUrl = "https://raw.githubusercontent.com/andrewswellie/ProjectTwo_Oppor
   
     var searchControl = new L.Control.Search({
       layer: tract,
-      propertyName: 'namelsad10',
+      propertyName: 'tract',
       marker: false,
       moveToLocation: function(latlng, title, map) {
         //map.fitBounds( latlng.layer.getBounds() );
