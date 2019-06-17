@@ -13,7 +13,7 @@ var queryUrl = "https://raw.githubusercontent.com/andrewswellie/ProjectTwo_Oppor
       // Define a function we want to run once for each feature in the features array
       // Give each feature a popup describing the place and time of the earthquake
       function onEachFeature(feature, layer) {
-        layer.bindPopup("<h3>" + feature.properties.namelsad10 +
+        layer.bindPopup("<h3> Census Tract: " + feature.properties.tract +
           "</h3><hr><b><p>" + feature.properties.community_name + "</b><br/><br/>" +
           "Median Household Income: $" + feature.properties.median_income + "<br/>" +
           "Median Home Value: " + feature.properties.home_value + "<br/>" +
