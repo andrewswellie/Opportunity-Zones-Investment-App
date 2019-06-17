@@ -32,6 +32,7 @@ function createFeatures(tracts) {
               fillOpacity: 0.9
             });
           },
+          
           // When the cursor no longer hovers over a map feature - when the mouseout event occurs - the feature's opacity reverts back to 50%
           mouseout: function(event) {
             layer = event.target;
@@ -41,7 +42,7 @@ function createFeatures(tracts) {
           },
          
         });
-  
+      
     }
 
     // Create a GeoJSON layer containing the features array on the tracts object
@@ -51,12 +52,12 @@ function createFeatures(tracts) {
       onEachFeature: onEachFeature
     });
 
-
     // Sending our tract layer to the createMap function
     createMap(tract);
   }
 
   })
+
 
 function createMap(tract) {
 
@@ -81,10 +82,13 @@ function createMap(tract) {
     "Light Map": lightmap
   };
 
+ 
   // Create overlay object to hold our overlay layer
   var overlayMaps = {
     tract: tract
   };
+
+
 
   // Create our map, giving it the streetmap and tract layers to display on load
   var myMap = L.map("map", {
@@ -95,10 +99,40 @@ function createMap(tract) {
     layers: [streetmap, tract]
   });
 
+
   // Create a layer control
   // Pass in our baseMaps and overlayMaps
   // Add the layer control to the map
   L.control.layers(baseMaps, overlayMaps, {
     collapsed: false
   }).addTo(myMap);
+
+          
+
+
+  var searchControl = new L.Control.Search({
+		layer: tract,
+		propertyName: 'namelsad10',
+		marker: false,
+		moveToLocation: function(latlng, title, map) {
+			//map.fitBounds( latlng.layer.getBounds() );
+			var zoom = map.getBoundsZoom(latlng.layer.getBounds());
+  			map.setView(latlng, zoom); // access the zoom
+		}
+	});
+	searchControl.on('search:locationfound', function(e) {
+		
+		//console.log('search:locationfound', );
+		//map.removeLayer(this._markerSearch)
+		e.layer.setStyle({fillColor: '#3f0', color: '#0f0'});
+		if(e.layer._popup)
+			e.layer.openPopup();
+	}).on('search:collapsed', function(e) {
+		tract.eachLayer(function(layer) {	//restore feature color
+			tract.resetStyle(layer);
+		});	
+	});
+	
+	myMap.addControl( searchControl );  //inizialize search control
+
 }
