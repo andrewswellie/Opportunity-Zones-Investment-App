@@ -20,12 +20,12 @@ The Opportunity Zones incentive is a new community investment program establishe
 ![1-Logo](Images/zonestool1.png)
 
 ## Compare all Zones Across all Key Metrics
-![1-Logo](images/zonestool2.png)
+![1-Logo](Images/zonestool2.png)
 
 ## Easily Search for a Zone Using Census Tract Number
-![1-Logo](images/zonestool3.png)
+![1-Logo](Images/zonestool3.png)
 
 ## The Tool Finds Your Desired Zone!
-![1-Logo](images/zonestool4.png)
+![1-Logo](Images/zonestool4.png)
 
 
