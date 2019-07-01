@@ -16,16 +16,16 @@ The Opportunity Zones incentive is a new community investment program establishe
 
 5. 135 qualified Opportunity Zones exist in this County
 
-## Our App
+## Our App - Click on any Zone for Key Metrics
 ![1-Logo](zonestool1.png)
 
-## Click on a Highlighted Zone for Key Metrics
+## Compare all Zones Across all Key Metrics
 ![1-Logo](zonestool2.png)
 
-## Compare all Zones Across All KPIs
+## Easily Search for a Zone Using Census Tract Number
 ![1-Logo](zonestool3.png)
 
-## Easily Search for a Zone Using Census Tract Number
+## The Tool Finds Your Desired Zone!
 ![1-Logo](zonestool4.png)
 
 
